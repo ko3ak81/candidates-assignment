@@ -1,2 +1,3 @@
 #!/bin/bash
-#add fix to exercise2 here
+sudo sed '/ascii-art.de/d' /etc/hosts > /tmp/hosts
+sudo cp /tmp/hosts /etc/hosts

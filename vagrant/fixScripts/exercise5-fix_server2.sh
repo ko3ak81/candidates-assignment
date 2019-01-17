@@ -1,2 +1,34 @@
 #!/bin/bash
-#add fix to exercise5-server2 here
+echo "-----BEGIN RSA PRIVATE KEY-----
+MIIEpAIBAAKCAQEA3VqdIoo7jWYXSNjNGO8KnMznGxsM8xlpS87jvjrthSjtNeaD
+4Lz9viRyUb53AZOEKm6ayIj8WHnoRk+GF0YSMTBlvp1k9g8tx0MA2KMVu4fkkWf4
++PvscUHK9uCLTWTbKHojwFp6m3aQFK30MDQJfK4nEiYF06H8Grxrpn9FIlZW/66U
+QRfiL4RIbfniBuJutavYQ+2SHkv83SLQ06FBmHmHhbMlzTboAzc8NNqWCdvDWSaM
+Lt2TLYXpQd4mCqhWXLb9jgzcevNDQTNu7iA+3a/2pIoUke8ktvEcJ4n0jpcP+z2Y
+f+KEtsyQOX/IxGSOhDfb50tMGgiQMTZva7PYwQIDAQABAoIBAEfJSUiYV/Pldguz
+89/wNhrgANszjKGSTim9sPJSnhEfUr62QXKzF/+ARmroQCQMuUIhmKUMd/ohnwie
+ZbhKiz/UmEqXNNTv20LSIgYf7b5htejKNV5aJTYdxjsGW2cAHGsmIU4Sicy9SMDM
+IXM4jRMYT6d9GUqnL+Fj1e2rPLqDdvybyHvbFF5zZz62GLK0smintquvt4lxK2TH
+3IVYynMECkx2vVhp7vb3OHd2Cv06a1MPCeeNb6UXx2J40wwdhk0mRiL1/uI4wkMh
+HHDATUsoxK+L2ZIRYscwL5nP0bybsFPWw0cH7OcjHRRsMFSuk1PFM+Zb4YpKOBuq
+6pz6hyECgYEA/hAg+2+J/bfol3OrBKGYffdWOqVZu5k2tysX/VBQhkXVrxhs4sgh
+tp4qV+9+XE/ds3wDFbXY/8saBhVQuc17RSpalCpgh/74b3lJxu83q5s9iNiWSZnl
+nh82iqoLPmyg6NUa9qRJmE8kTS3zidcjALpiKhBpWlFKcZNCpcC2Y60CgYEA3wql
+BeBf5xlAhBLKf+sdHs+CQwaXdfRw06HERrgIGqXKlvgpmPUk6CbM9vr3Kg2Q+kkt
+CfEpGu4ftdvHDQaO3ak2SVXYGkf/sAJckZgV0J9JmVKhdx0yJ5m9nkH6AeOmEWCv
+Fc2u5NohemJsdmsvfI9pP1KiKA5Q9wPc7GHdS+UCgYEA3g+25E3PbMYMNCRTfE7J
+/H/tDIFt9vypyFuQMka6u0HazZopweZvITEJjaa06XadLr3b7GPvcVRSQLLsxhoF
+/qRQW2TWzsda2gRHKev42rNri2rToS00d4qMn5KVFVDZK+joEl/yO4AhGJxrWzWB
+UKeYGXASxXB8At1VyY6xXFkCgYAlgtbKLDg016xgCgEAjnwxSFjyCNPERL4M+bHW
+6vCB+swdo9LrJJ92Y8Ao8YBMFEgDr/bhKyvsmYu/vBy39hhk8yZsIwHbOayo31zO
+J7PTiFaKcLkzHTfoLRUU3qe7VZwCZC5ODm+RkZX7zT3MlK5B1qSuv6kB75ZyVLX9
+E2ByeQKBgQDJCga0UkH47j6t63OxDkj9WDIb56nmX+efp4aygMp1RBUnBge9/eMG
+zJms3TbUEz5xB+bIQsvVD663Xt0XZDGE9ymz1Gt8y6KVeamf4ufC3EkQflPeekzg
+BNLHjMnjL2ie3hNZU8WU+Hi6lvMryo+CyzqoytR8PAJDJSQ+jCXY1A==
+-----END RSA PRIVATE KEY-----" > $HOME/.ssh/id_rsa
+echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDdWp0iijuNZhdI2M0Y7wqczOcbGwzzGWlLzuO+Ou2FKO015oPgvP2+JHJRvncBk4QqbprIiPxYeehGT4YXRhIxMGW+nWT2Dy3HQwDYoxW7h+SRZ/j4++xxQcr24ItNZNsoeiPAWnqbdpAUrfQwNAl8ricSJgXTofwavGumf0UiVlb/rpRBF+IvhEht+eIG4m61q9hD7ZIeS/zdItDToUGYeYeFsyXNNugDNzw02pYJ28NZJowu3ZMthelB3iYKqFZctv2ODNx680NBM27uID7dr/akihSR7yS28RwnifSOlw/7PZh/4oS2zJA5f8jEZI6EN9vnS0waCJAxNm9rs9jB vagrant@server1" > $HOME/.ssh/id_rsa.pub
+cat $HOME/.ssh/id_rsa.pub >> $HOME/.ssh/authorized_keys
+sudo chmod 400 $HOME/.ssh/id_rsa 
+sudo sed  -i  's/PasswordAuthentication yes/PasswordAuthentication no/i'  /etc/ssh/sshd_config
+sudo service ssh restart
+

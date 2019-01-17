@@ -1,2 +1,5 @@
 #!/bin/bash
-#add fix to exercise4-server1 here
+cp /etc/hosts /tmp/hosts
+echo "192.168.100.11 server2" >> /tmp/hosts
+sudo sudo cp /tmp/hosts /etc/hosts
+
